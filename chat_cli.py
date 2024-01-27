@@ -22,15 +22,14 @@ def main(
     print("Generator built. Type 'quit' to exit.")
 
     if messages is None:
-        messages = []
+        messages = [{"role": "system", "content": "Start of conversation"}]
 
     while True:
         user_input = input("You: ")
         if user_input.lower() == 'quit':
             break
-        if not messages:
-            messages.append({"role": "system", "content": "Start of conversation"})
         dialog = messages + [{"role": "user", "content": user_input}]
+        input(f"{dialog}\nPress Enter to continue...")
         result = generator.chat_completion(
             [dialog],
             max_gen_len=max_gen_len,
