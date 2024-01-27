@@ -29,6 +29,7 @@ def main(
         if user_input.lower() == 'quit':
             break
         dialog = messages + [{"role": "user", "content": user_input}]
+        messages = dialog 
         input(f"{dialog}\nPress Enter to continue...")
         result = generator.chat_completion(
             [dialog],
